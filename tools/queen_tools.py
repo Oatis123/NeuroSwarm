@@ -1,6 +1,7 @@
 from langchain_core.tools import tool
 from agents.worker import worker
 import threading
+from rich.progress import track
 
 @tool
 def request_to_swarm(tasks: list[str])->str:
@@ -14,7 +15,7 @@ def request_to_swarm(tasks: list[str])->str:
         thread = threading.Thread(target=worker, args=(task, answers))
         threads.append(thread)
         thread.start()
-    print(f"Задействовано {agent_count} агента/ов")
-    for thr in threads:
+    description = f"[green]{agent_count} {'agent' if agent_count == 1 else 'agents'} working on the task\n"
+    for thr in track(threads, description=description):
         thr.join()
     return "\n".join(answers)
