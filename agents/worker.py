@@ -2,6 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.prebuilt import create_react_agent
 from prompts.worker_prompt import prompt
+from tools.web_tools import tavily_tool, scrape_webpage
 import os
 from dotenv import load_dotenv
 
@@ -10,10 +11,10 @@ load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", api_key=api_key, temperature=0.5)
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite", api_key=api_key, temperature=0.5)
 
 
-tools = []
+tools = [tavily_tool, scrape_webpage]
 
 
 worker_agent = create_react_agent(

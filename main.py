@@ -47,6 +47,5 @@ while True:
                     expand=False
                 )
             )
-            
     console.print("\n[green]User: [/green]", end="")
     user_input = input()
