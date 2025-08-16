@@ -4,12 +4,10 @@ from langgraph.prebuilt import create_react_agent
 from prompts.worker_prompt import prompt
 from tools.web_tools import tavily_tool, scrape_webpage
 import os
-from dotenv import load_dotenv
+from utils import gemini_api_key
 
 
-load_dotenv()
-
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = gemini_api_key
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite", api_key=api_key, temperature=0.5)
 

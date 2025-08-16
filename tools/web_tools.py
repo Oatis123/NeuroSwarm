@@ -3,12 +3,14 @@ from langchain_core.tools import Tool, tool
 import requests
 from bs4 import BeautifulSoup
 import os
-from dotenv import load_dotenv
+from rich.console import Console
+from utils import tavily_api_key
 
-load_dotenv()
-
-tavily_tool = TavilySearchResults(max_results=5)
+tavily_tool = TavilySearchResults(
+    tavily_api_key=tavily_api_key,
+    max_results=5)
 tavily_tool.description = "Инструмент для поиска актуальной информации в интернете."
+tavily_tool.include_images = False
 
 @tool
 def scrape_webpage(url: str) -> str:
@@ -16,6 +18,8 @@ def scrape_webpage(url: str) -> str:
     Инструмент, который загружает веб-страницу по URL и возвращает ее текстовое содержимое.
     Используйте его, чтобы получить детальную информацию со страницы, найденной с помощью поиска.
     """
+    console = Console()
+    console.print(f"[green]Analyze page by url: {url}[/green]")
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()  # Проверка на ошибки HTTP

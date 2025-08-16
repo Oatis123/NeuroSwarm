@@ -4,13 +4,11 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.prebuilt import create_react_agent
 from tools.queen_tools import request_to_swarm
 from tools.web_tools import tavily_tool, scrape_webpage
+from utils import gemini_api_key
 import os
-from dotenv import load_dotenv
 
 
-load_dotenv()
-
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = gemini_api_key
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=api_key, temperature=0.5)
 
