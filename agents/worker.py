@@ -3,7 +3,6 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.prebuilt import create_react_agent
 from prompts.worker_prompt import prompt
 from tools.web_tools import tavily_tool, scrape_webpage
-import os
 from utils import gemini_api_key
 
 

@@ -1,11 +1,8 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_cohere import ChatCohere
-from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.prebuilt import create_react_agent
 from tools.queen_tools import request_to_swarm
 from tools.web_tools import tavily_tool, scrape_webpage
 from utils import gemini_api_key
-import os
 
 
 api_key = gemini_api_key

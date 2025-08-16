@@ -1,12 +1,11 @@
-from langchain_community.tools import TavilySearchResults
-from langchain_core.tools import Tool, tool
+from langchain_tavily import TavilySearch
+from langchain_core.tools import tool
 import requests
 from bs4 import BeautifulSoup
-import os
 from rich.console import Console
 from utils import tavily_api_key
 
-tavily_tool = TavilySearchResults(
+tavily_tool = TavilySearch(
     tavily_api_key=tavily_api_key,
     max_results=5)
 tavily_tool.description = "Инструмент для поиска актуальной информации в интернете."

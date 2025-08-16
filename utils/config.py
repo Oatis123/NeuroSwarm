@@ -7,8 +7,9 @@ def load(config_data_name: str)->str:
     config_data = config_data[config_data_name]
     return config_data
 
-
-gemini_api_key = load("gemini_api_key")
-tavily_api_key = load("tavily_api_key")
-
-print(gemini_api_key, tavily_api_key)
+try:
+    gemini_api_key = load("gemini_api_key")
+    tavily_api_key = load("tavily_api_key")
+except:
+    gemini_api_key = "none"
+    tavily_api_key = "none"

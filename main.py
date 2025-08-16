@@ -1,11 +1,14 @@
+from pathlib import Path
 from agents.queen import request_to_queen
 from langchain_core.messages import HumanMessage, SystemMessage
 from prompts.queen_prompt import prompt as system_prompt
 from rich.console import Console
 from rich.markdown import Markdown
 from components import neuro_swarm_art as nsa
-from components import commands, models, help
-from pathlib import Path
+from components import commands, models, help, show_loading_animation
+import os
+import sys
+import time
 import json
 
 
@@ -60,4 +63,6 @@ if __name__ == "__main__":
         tavily_api_key = input()
         with open("config.json", "w", encoding="utf-8") as f:
             json.dump({"gemini_api_key": gemini_api_key, "tavily_api_key": tavily_api_key}, f)
-        console.print("[green]Please restart the application: [/green]", end="")
+        console.print("[green]Restarting application: [/green]", end="")
+        show_loading_animation()
+        os.execv(sys.executable, ["python"] + sys.argv)
