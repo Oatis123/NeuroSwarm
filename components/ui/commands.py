@@ -21,7 +21,7 @@ def help():
 
 def models():
     console.print("\n[green]System: [/green]")
-    command_text = "Worker agent model - gemini-2.5-flash-lite\nOrchestrator agent model - gemini-2.5-flash"
+    command_text = "Search agent model - gemini-2.0-flash-lite\nSimple agent model - gemma-3-27b-itt\nOrchestrator agent model - gemini-2.5-flash"
     console.print(
         Panel(
             command_text,
