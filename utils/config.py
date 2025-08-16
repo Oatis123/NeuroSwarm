@@ -2,7 +2,7 @@ import json
 
 
 def load(config_data_name: str)->str:
-    with open("config.json", "r", encoding="utf-8") as f:
+    with open("data/config.json", "r", encoding="utf-8") as f:
         config_data = json.load(f)
     config_data = config_data[config_data_name]
     return config_data

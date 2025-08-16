@@ -15,11 +15,14 @@ if __name__ == "__main__":
 
     console = Console()
 
-    Path("config.json").touch()
+    data_directory = Path("data")
+    data_directory.mkdir(exist_ok=True)
+
+    Path("data/config.json").touch()
 
     configurated = True
 
-    with open("config.json", "r", encoding="utf-8") as f:
+    with open("data/config.json", "r", encoding="utf-8") as f:
         try:
             data = json.load(f)
         except:
@@ -60,7 +63,7 @@ if __name__ == "__main__":
         gemini_api_key = input()
         console.print("[green]Enter your Tavily API key: [/green]", end="")
         tavily_api_key = input()
-        with open("config.json", "w", encoding="utf-8") as f:
+        with open("data/config.json", "w", encoding="utf-8") as f:
             json.dump({"gemini_api_key": gemini_api_key, "tavily_api_key": tavily_api_key}, f)
         console.print("[green]Restarting application: [/green]", end="")
         show_loading_animation()
