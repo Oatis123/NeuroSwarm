@@ -8,7 +8,6 @@ from components import neuro_swarm_art as nsa
 from components import commands, models, help, show_loading_animation
 import os
 import sys
-import time
 import json
 
 
@@ -43,7 +42,7 @@ if __name__ == "__main__":
                 resp = request_to_queen(chat_history)
                 chat_history = resp
                 if isinstance(resp["messages"][-1].content, list):
-                    for chunk in resp:
+                    for chunk in resp["messages"][-1].content:
                         console.print(Markdown(chunk))
                 else:
                     console.print(Markdown(resp["messages"][-1].content))
