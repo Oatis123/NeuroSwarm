@@ -1,7 +1,6 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.messages import HumanMessage, SystemMessage
-from prompts.worker_prompt import prompt
-from tools.web_tools import tavily_tool, scrape_webpage
+from langchain_core.messages import HumanMessage
+from prompts.simple_worker_prompt import prompt
 from utils import gemini_api_key
 
 
