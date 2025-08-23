@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  neuroswarm-api:
+    build: .
+    container_name: neuroswarm-server
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    working_dir: /app
